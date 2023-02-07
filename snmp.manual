@@ -1,0 +1,16 @@
+# Asuswrt-Merlin SNMPD install for ASUS GT-AX11000
+# Manual c&p lines if you don't want to install git
+
+opkg install mini_snmpd
+opkg install snmp-utils
+
+create /opt/etc/init.d/S50mini_snmpd
+
+ENABLED=yes
+PROCS=mini_snmpd
+ARGS="-i br0,eth0 -D GT-AX11000 -L YOUR_LOCATION -c YOUR_COMMUNITY -C YOUR_EMAIL"
+PREARGS=""
+DESC=$PROCS
+PATH=/opt/sbin:/opt/bin:/opt/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+. /opt/etc/init.d/rc.func
